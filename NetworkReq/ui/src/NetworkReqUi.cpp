@@ -4,6 +4,8 @@ NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
 {
     // 初始化UI
     initUi();
+    // 初始化事件
+    initEvent();
 }
 
 void NetworkReqUi::initUi()
@@ -33,4 +35,22 @@ void NetworkReqUi::initUi()
 
     // 窗口大小
     this->resize(800, 600);
+}
+
+void NetworkReqUi::initEvent()
+{
+    this->connect(_ui_btn_req, &QPushButton::clicked, [this]()
+                  { this->onClickBtnReq(); });
+}
+
+void NetworkReqUi::onClickBtnReq()
+{
+    QString urlStr = _ui_line_url->text();
+    if (urlStr.isEmpty())
+    {
+        _ui_txt_res->setPlainText("请输入一个链接");
+        return;
+    }
+    _ui_txt_res->clear();
+    _ui_txt_res->appendPlainText(QString("开始请求：") + urlStr);
 }

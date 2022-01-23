@@ -21,4 +21,7 @@ private:
     QVBoxLayout *_ui_vlay_ui = nullptr;
 
     void initUi();
+    void initEvent();
+
+    void onClickBtnReq();
 };
