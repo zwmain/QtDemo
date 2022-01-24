@@ -1,4 +1,6 @@
 #include "NetworkReqUi.h"
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
 {
@@ -46,7 +48,10 @@ void NetworkReqUi::initEvent()
 void NetworkReqUi::onClickBtnReq()
 {
     QString urlStr = _ui_line_url->text();
-    if (urlStr.isEmpty())
+    QRegularExpression regUrl("^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$");
+    QRegularExpressionMatch match = regUrl.match(urlStr);
+    bool matFlag = match.hasMatch();
+    if (!matFlag)
     {
         _ui_txt_res->setPlainText("请输入一个链接");
         return;
