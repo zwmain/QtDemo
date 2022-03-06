@@ -5,6 +5,7 @@
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QNetworkAccessManager>
 
 class NetworkReqUi : public QWidget
 {
@@ -19,9 +20,12 @@ private:
     QHBoxLayout *_ui_hlay_req = nullptr;
     QVBoxLayout *_ui_vlay_res = nullptr;
     QVBoxLayout *_ui_vlay_ui = nullptr;
+    QNetworkAccessManager *_net_mgr = nullptr;
 
     void initUi();
     void initEvent();
+    void initNetwork();
 
     void onClickBtnReq();
+    void onNetFinish();
 };

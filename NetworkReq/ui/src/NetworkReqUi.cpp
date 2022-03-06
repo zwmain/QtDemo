@@ -1,6 +1,8 @@
 #include "NetworkReqUi.h"
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 
 NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
 {
@@ -45,6 +47,12 @@ void NetworkReqUi::initEvent()
                   { this->onClickBtnReq(); });
 }
 
+void NetworkReqUi::initNetwork()
+{
+    _net_mgr = new QNetworkAccessManager(this);
+    connect(_net_mgr, &QNetworkAccessManager::finished, this, &NetworkReqUi::onNetFinish);
+}
+
 void NetworkReqUi::onClickBtnReq()
 {
     QString urlStr = _ui_line_url->text();
@@ -58,4 +66,10 @@ void NetworkReqUi::onClickBtnReq()
     }
     _ui_txt_res->clear();
     _ui_txt_res->appendPlainText(QString("开始请求：") + urlStr);
+    _net_mgr->get(QNetworkRequest(urlStr));
+}
+
+void NetworkReqUi::onNetFinish()
+{
+    _ui_txt_res->appendPlainText("请求结束");
 }
