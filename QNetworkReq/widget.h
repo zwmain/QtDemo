@@ -2,6 +2,10 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QPlainTextEdit>
+#include <QNetworkAccessManager>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -17,5 +21,12 @@ public:
 
 private:
     Ui::Widget *ui;
+    QLineEdit *_ui_line_url = nullptr;
+    QPushButton *_ui_btn_req = nullptr;
+    QPlainTextEdit *_ui_txt_res = nullptr;
+    QNetworkAccessManager *_net_mgr = nullptr;
+
+    void onClickBtnReq();
+    void onNetFinish();
 };
 #endif // WIDGET_H

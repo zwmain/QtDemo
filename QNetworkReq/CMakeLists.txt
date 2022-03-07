@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Network)
 
 set(TS_FILES QNetworkReq_zh_CN.ts)
 
@@ -51,7 +52,7 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(QNetworkReq PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(QNetworkReq PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Network)
 
 set_target_properties(QNetworkReq PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
