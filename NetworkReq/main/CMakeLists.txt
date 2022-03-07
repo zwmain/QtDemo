@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 3.16)
 
 project(main)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-# find_package(Qt6 COMPONENTS Core REQUIRED)
-# find_package(Qt6 COMPONENTS Gui REQUIRED)
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp)
