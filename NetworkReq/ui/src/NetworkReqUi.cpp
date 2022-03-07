@@ -10,6 +10,8 @@ NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
     initUi();
     // 初始化事件
     initEvent();
+    // 初始化网络
+    initNetwork();
 }
 
 void NetworkReqUi::initUi()

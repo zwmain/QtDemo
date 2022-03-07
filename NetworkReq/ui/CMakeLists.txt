@@ -6,10 +6,6 @@ project(NetworkReqUi)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 设置Qt路径
-set(QT_DIR /opt/Qt/Qt6/6.2.3/gcc_64)
-set(CMAKE_PREFIX_PATH ${QT_DIR})
-
 # 提供Qt编译支持
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
