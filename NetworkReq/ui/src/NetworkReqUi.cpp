@@ -2,7 +2,6 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QNetworkRequest>
-#include <QNetworkReply>
 
 NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
 {
@@ -71,7 +70,21 @@ void NetworkReqUi::onClickBtnReq()
     _net_mgr->get(QNetworkRequest(urlStr));
 }
 
-void NetworkReqUi::onNetFinish()
+void NetworkReqUi::onNetFinish(QNetworkReply *rep)
 {
     _ui_txt_res->appendPlainText("请求结束");
+    if (nullptr == rep)
+    {
+        _ui_txt_res->appendPlainText("结果无效");
+        return;
+    }
+    else
+    {
+        _ui_txt_res->appendPlainText("结果有效");
+    }
+    QList<QByteArray> header_list = rep->rawHeaderList();
+    for (auto &i : header_list)
+    {
+        _ui_txt_res->appendPlainText(QString(i));
+    }
 }

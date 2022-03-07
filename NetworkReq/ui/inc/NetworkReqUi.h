@@ -8,6 +8,7 @@
 // 这里必须使用QtNetwork/前缀
 // 否则编译无法通过
 #include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 class NetworkReqUi : public QWidget
 {
@@ -29,5 +30,5 @@ private:
     void initNetwork();
 
     void onClickBtnReq();
-    void onNetFinish();
+    void onNetFinish(QNetworkReply* rep);
 };
