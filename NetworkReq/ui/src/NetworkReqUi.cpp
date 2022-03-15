@@ -40,6 +40,7 @@ void NetworkReqUi::initUi()
 
     // 窗口大小
     this->resize(800, 600);
+    this->setWindowTitle("网络请求");
 }
 
 void NetworkReqUi::initEvent()
@@ -82,9 +83,7 @@ void NetworkReqUi::onNetFinish(QNetworkReply *rep)
     {
         _ui_txt_res->appendPlainText("结果有效");
     }
-    QList<QByteArray> header_list = rep->rawHeaderList();
-    for (auto &i : header_list)
-    {
-        _ui_txt_res->appendPlainText(QString(i));
-    }
+    QByteArray res_byte = rep->readAll();
+    QString res_str(res_byte);
+    _ui_txt_res->appendPlainText(res_str);
 }
