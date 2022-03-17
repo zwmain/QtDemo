@@ -31,4 +31,5 @@ private:
 
     void onClickBtnReq();
     void onNetFinish(QNetworkReply* rep);
+    void onDownload(qint64 bytesReceived, qint64 bytesTotal);
 };

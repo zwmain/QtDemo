@@ -2,6 +2,7 @@
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QNetworkRequest>
+#include <limits>
 
 NetworkReqUi::NetworkReqUi() : QWidget(nullptr)
 {
@@ -68,7 +69,8 @@ void NetworkReqUi::onClickBtnReq()
     }
     _ui_txt_res->clear();
     _ui_txt_res->appendPlainText(QString("开始请求：") + urlStr);
-    _net_mgr->get(QNetworkRequest(urlStr));
+    QNetworkReply *net_rep = _net_mgr->get(QNetworkRequest(urlStr));
+    connect(net_rep, &QNetworkReply::downloadProgress, this, &NetworkReqUi::onDownload);
 }
 
 void NetworkReqUi::onNetFinish(QNetworkReply *rep)
@@ -86,4 +88,12 @@ void NetworkReqUi::onNetFinish(QNetworkReply *rep)
     QByteArray res_byte = rep->readAll();
     QString res_str(res_byte);
     _ui_txt_res->appendPlainText(res_str);
+}
+
+void NetworkReqUi::onDownload(qint64 bytesReceived, qint64 bytesTotal)
+{
+    double rate = bytesTotal <= 0 ? 0.0001 : bytesReceived / (bytesTotal * 1.0);
+    rate *= 100.0;
+    QString str = QString::number(rate) + "%";
+    _ui_txt_res->appendPlainText(str);
 }
