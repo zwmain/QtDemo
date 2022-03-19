@@ -19,6 +19,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+# 设置Qt路径
 set(CMAKE_PREFIX_PATH "/opt/Qt/Qt6/6.2.3/gcc_64")
 
 find_package(Qt6 REQUIRED COMPONENTS Core)
