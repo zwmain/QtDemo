@@ -26,7 +26,7 @@ UiMain::UiMain(QWidget *parent) : QWidget(parent)
     _ui_lin_port = new QLineEdit(_ui_wid_cfg);
     _ui_lay_cfg->addWidget(_ui_lin_port, 0, 3, 1, 1);
 
-    _ui_btn_cfg = new QPushButton("确认", _ui_wid_cfg);
+    _ui_btn_cfg = new QPushButton("连接", _ui_wid_cfg);
     _ui_lay_cfg->addWidget(_ui_btn_cfg, 0, 4, 1, 1);
 
     _ui_sp_main = new QSplitter(Qt::Orientation::Horizontal, this);
@@ -56,6 +56,13 @@ UiMain::UiMain(QWidget *parent) : QWidget(parent)
     {
         is_success = _server->listen(QHostAddress("127.0.0.1"), port);
         ++port;
+    }
+    --port;
+
+    if (is_success)
+    {
+        _ui_txt_display->append(QString("IP地址：%1").arg("127.0.0.1"));
+        _ui_txt_display->append(QString("端口：%2").arg(port));
     }
 
     connect(_server, &QTcpServer::acceptError, this, &UiMain::onAcceptError);
