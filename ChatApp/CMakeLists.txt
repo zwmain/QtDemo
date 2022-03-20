@@ -17,6 +17,7 @@ set(CMAKE_PREFIX_PATH "/opt/Qt/Qt6/6.2.3/gcc_64")
 
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Network)
 
 set(MY_HEADER
     UiMain.h
@@ -28,4 +29,4 @@ set(MY_SRC
 
 add_executable(${PROJECT_NAME} main.cpp ${MY_HEADER} ${MY_SRC})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets Qt6::Network)
