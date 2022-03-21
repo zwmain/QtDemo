@@ -42,4 +42,8 @@ private:
     // Event function
     void onAcceptError(QAbstractSocket::SocketError socketError);
     void onNewConnection();
+    void connectToServer();
+    void onConnected();
+    void onDisconnected();
+    void onErrorOccurred(QAbstractSocket::SocketError socketError);
 };

@@ -69,6 +69,11 @@ UiMain::UiMain(QWidget *parent) : QWidget(parent)
     connect(_server, &QTcpServer::newConnection, this, &UiMain::onNewConnection);
 
     _sock = new QTcpSocket(this);
+    connect(_sock, &QTcpSocket::connected, this, &UiMain::onConnected);
+    connect(_sock, &QTcpSocket::disconnected, this, &UiMain::onDisconnected);
+    connect(_sock, &QTcpSocket::errorOccurred, this, &UiMain::onErrorOccurred);
+
+    connect(_ui_btn_cfg, &QPushButton::clicked, this, &UiMain::connectToServer);
 }
 
 UiMain::~UiMain()
@@ -81,10 +86,32 @@ UiMain::~UiMain()
 
 void UiMain::onAcceptError(QAbstractSocket::SocketError socketError)
 {
-    // todo
+    _ui_txt_display->append(QString("服务端错误 %1").arg(socketError));
 }
 
 void UiMain::onNewConnection()
 {
-    // todo
+    _ui_txt_display->append(QString("新的连接"));
+}
+
+void UiMain::connectToServer()
+{
+    QString host = _ui_lin_host->text();
+    int port = _ui_lin_port->text().toInt();
+    _sock->connectToHost(host, port);
+}
+
+void UiMain::onConnected()
+{
+    _ui_txt_display->append("连接成功");
+}
+
+void UiMain::onDisconnected()
+{
+    _ui_txt_display->append("断开连接");
+}
+
+void UiMain::onErrorOccurred(QAbstractSocket::SocketError socketError)
+{
+    _ui_txt_display->append(QString("服务端错误 %1").arg(socketError));
 }
