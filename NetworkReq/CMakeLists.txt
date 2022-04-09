@@ -12,7 +12,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_PREFIX_PATH "/opt/Qt/Qt6/6.2.3/gcc_64")
+set(CMAKE_PREFIX_PATH "/opt/Qt/6.2.4/gcc_64")
 
 add_subdirectory(main)
 add_subdirectory(ui)
