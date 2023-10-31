@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget* parent)
     , ui(new Ui::uiMainWid)
 {
     ui->setupUi(this);
-    setWindowTitle(MainWindow::tr("羽飞的主页"));
 
     connect(ui->uiSearchBtn, &QPushButton::clicked, this, &MainWindow::onClickSearch);
 }

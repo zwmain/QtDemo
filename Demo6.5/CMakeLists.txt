@@ -44,6 +44,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${Qt6Widgets_INCLUDE_DIRS})
 # 链接Qt相关库，其它Qt库也都是这种格式
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
 
+add_dependencies(${PROJECT_NAME} update_translations release_translations)
+
 # 设置应用程序属性，主要在Windows和MACOS下起作用
 set_target_properties(
     ${PROJECT_NAME} PROPERTIES
