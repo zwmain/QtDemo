@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 project("Demo" VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_PREFIX_PATH "D:\\ProgramFiles\\Qt\\5.15.2\\5.15\\msvc_2015_64;${CMAKE_PREFIX_PATH}")
+set(CMAKE_PREFIX_PATH "E:\\ProgramFiles\\Qt\\5.15.2\\msvc2019_64;${CMAKE_PREFIX_PATH}")
 # set(Qt5_DIR "D:\\ProgramFiles\\Qt\\5.15.2\\5.15\\msvc_2015_64\\lib\\cmake\\Qt5")
 
 set(CMAKE_CXX_STANDARD 11)

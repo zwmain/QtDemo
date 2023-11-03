@@ -9,6 +9,9 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+public:
+    void onSearch();
+
 private:
     Ui::UiMainWindow* ui;
 };
