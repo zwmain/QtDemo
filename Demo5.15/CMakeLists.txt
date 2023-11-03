@@ -19,6 +19,11 @@ set(CMAKE_INCLUDE)
 
 find_package(Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED)
 
+set(TS_FILES Demo_en.ts)
+
+qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+message(STATUS "QM File List: ${QM_FILES}")
+
 add_executable(
     ${PROJECT_NAME}
     main.cpp
@@ -26,6 +31,7 @@ add_executable(
     MainWindow.cpp
     MainWindow.ui
     resources.qrc
+    ${QM_FILES}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${Qt5Widgets_INCLUDE_DIRS})
