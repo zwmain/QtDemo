@@ -247,6 +247,28 @@ sudo apt install libxkbcommon-dev libvulkan-dev
 
 qrc和qm文件以及ui的头文件都生成在了build目录内
 
+## VSCode可视化调试
+
+在[KDToolBox](https://github.com/KDABLabs/KDToolBox/tree/master/qt/qt6_natvis)下载`qt6.natvis`文件
+
+下载后放入`${workspaceFolder}/.vscode`文件夹
+
+文件夹其实无所谓，主要是配置好就行
+
+在`.vscode/settings.json`中添加如下代码
+
+```json
+{
+    "cmake.debugConfig": {
+        "visualizerFile": "${workspaceFolder}/.vscode/qt6.natvis"
+    }
+}
+```
+
+该项目由于是使用CMake构建的，VSCode里面装了CMake调试插件
+
+如果是使用`lanuch.json`，则只需要设置`visualizerFile`就可以
+
 ## 源码
 
 ### CMakeLists.txt
