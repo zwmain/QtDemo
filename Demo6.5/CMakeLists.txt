@@ -24,6 +24,11 @@ qt_add_executable(
     MainWindow.ui
 )
 
+# qt_add_resources(
+#     目标
+#     qrc名称 PREFIX "/" FILES
+#     README.md
+# )
 qt_add_resources(
     ${PROJECT_NAME}
     ${PROJECT_NAME} PREFIX "/" FILES
@@ -40,11 +45,13 @@ qt_add_translations(
 # qt_add_lrelease(${PROJECT_NAME} TS_FILES "${PROJECT_NAME}_en.ts" "${PROJECT_NAME}_fr.ts")
 
 # 添加头文件目录，实际测试中，不添加好像也没问题
-target_include_directories(${PROJECT_NAME} PRIVATE ${Qt6Widgets_INCLUDE_DIRS})
+# target_include_directories(${PROJECT_NAME} PRIVATE ${Qt6Widgets_INCLUDE_DIRS})
 # 链接Qt相关库，其它Qt库也都是这种格式
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
 
-add_dependencies(${PROJECT_NAME} update_translations release_translations)
+# 指定构建顺序
+add_dependencies(release_translations update_translations)
+add_dependencies(${PROJECT_NAME} update_translations)
 
 # 设置应用程序属性，主要在Windows和MACOS下起作用
 set_target_properties(

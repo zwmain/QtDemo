@@ -166,18 +166,27 @@ CMake和Qt是通过运行这两个目标的方式实现更新翻译文件的
 运行下面的命令更新ts文件
 
 ```cmake
-$ cmake --build . --target update_translations
+cmake --build build --target update_translations
 ```
 
 再运行下面的命令生成qm文件
 
 ```cmake
-$ cmake --build . --target release_translations
+cmake --build build --target release_translations
 ```
 
 **注意**：这两个目标必须按顺序单独执行，不能build all，否则ts文件会生成异常
 
 最后，生成的qm文件被自动添加到了qrc资源文件里面，前缀是`/i18n`
+
+如果闲一个一个构建太麻烦
+
+可以指定依赖关系，也就是构建顺序
+
+```cmake
+add_dependencies(release_translations update_translations)
+add_dependencies(${PROJECT_NAME} update_translations)
+```
 
 
 ## 添加头文件目录和链接库
@@ -371,7 +380,6 @@ MainWindow::MainWindow(QWidget* parent)
     , ui(new Ui::uiMainWid)
 {
     ui->setupUi(this);
-    setWindowTitle(MainWindow::tr("羽飞的主页"));
 
     connect(ui->uiSearchBtn, &QPushButton::clicked, this, &MainWindow::onClickSearch);
 }
