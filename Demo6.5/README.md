@@ -184,8 +184,8 @@ cmake --build build --target release_translations
 可以指定依赖关系，也就是构建顺序
 
 ```cmake
+add_dependencies(update_translations ${PROJECT_NAME})
 add_dependencies(release_translations update_translations)
-add_dependencies(${PROJECT_NAME} update_translations)
 ```
 
 

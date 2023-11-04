@@ -50,8 +50,8 @@ qt_add_translations(
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
 
 # 指定构建顺序
+add_dependencies(update_translations ${PROJECT_NAME})
 add_dependencies(release_translations update_translations)
-add_dependencies(${PROJECT_NAME} update_translations)
 
 # 设置应用程序属性，主要在Windows和MACOS下起作用
 set_target_properties(
