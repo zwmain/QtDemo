@@ -4,13 +4,13 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="README.md" line="352"/>
+        <location filename="README.md" line="374"/>
         <source>羽飞的主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="26"/>
-        <location filename="README.md" line="369"/>
+        <location filename="README.md" line="391"/>
         <source>文件读取错误</source>
         <translation type="unfinished"></translation>
     </message>
