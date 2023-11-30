@@ -1,0 +1,5 @@
+{
+    "cmake.debugConfig": {
+        "visualizerFile": "${workspaceFolder}/qt5.natvis"
+    }
+}
