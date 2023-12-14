@@ -22,7 +22,7 @@ find_package(Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED)
 message(STATUS "${Qt5Widgets_LIBRARIES}")
 message(STATUS "${Qt5Core_LIBRARIES}")
 
-set(TS_FILES Demo_en.ts)
+set(TS_FILES Demo_en.ts Demo_fr.ts)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 message(STATUS "QM File List: ${QM_FILES}")
